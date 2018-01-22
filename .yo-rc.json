@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.jhipster.craft",
+      "nativeLanguage": "ua"
+    },
+    "jhipsterVersion": "4.13.3",
+    "baseName": "craft",
+    "packageName": "com.jhipster.craft",
+    "packageFolder": "com/jhipster/craft",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "gradle",
+    "enableSocialSignIn": true,
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "ed05c6baab384aad80f1cd80cfd1f4210ae0385c",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "yarn",
+    "applicationType": "monolith",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "ua",
+    "languages": [
+      "ua",
+      "en"
+    ]
+  }
+}
