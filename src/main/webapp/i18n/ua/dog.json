@@ -1,0 +1,24 @@
+{
+    "craftApp": {
+        "dog" : {
+            "home": {
+                "title": "Dogs",
+                "createLabel": "Створити новий Dog",
+                "createOrEditLabel": "Створити чи редагувати Dog"
+            },
+            "created": "Новий Dog створений з ідентифікатором {{ param }}",
+            "updated": "Dog оновлений з ідентифікатором {{ param }}",
+            "deleted": "Dog видалений з ідентифікатором {{ param }}",
+            "delete": {
+                "question": "Ви впевнені, що хочете видалити Dog {{ id }}?"
+            },
+            "detail": {
+                "title": "Dog"
+            },
+            "name": "Name",
+            "age": "Age",
+            "photo": "Photo",
+            "master": "Master"
+        }
+    }
+}

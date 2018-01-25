@@ -1,0 +1,43 @@
+
+<div *ngIf="dog">
+    <h2><span jhiTranslate="craftApp.dog.detail.title">Dog</span> {{dog.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="craftApp.dog.name">Name</span></dt>
+        <dd>
+            <span>{{dog.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="craftApp.dog.age">Age</span></dt>
+        <dd>
+            <span>{{dog.age}}</span>
+        </dd>
+        <dt><span jhiTranslate="craftApp.dog.photo">Photo</span></dt>
+        <dd>
+            <div *ngIf="dog.photo">
+                <a (click)="openFile(dog.photoContentType, dog.photo)">
+                    <img [src]="'data:' + dog.photoContentType + ';base64,' + dog.photo" style="max-width: 100%;" alt="dog image"/>
+                </a>
+                {{dog.photoContentType}}, {{byteSize(dog.photo)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="craftApp.dog.master">Master</span></dt>
+        <dd>
+            {{dog.master?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'dog/'+ dog.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
