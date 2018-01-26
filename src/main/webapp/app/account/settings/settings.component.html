@@ -72,6 +72,28 @@
                         </small>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="Image" jhiTranslate="settings.form.image">Image</label>
+                    <input type="url" class="form-control" id="image" name="Image" placeholder="{{'settings.form.image.placeholder' | translate}}"
+                           [(ngModel)]="settingsAccount.imageUrl" minlength=3 maxlength=256 #imageInput="ngModel" pattern="https?://.+" >
+                    <div *ngIf="imageInput.dirty && imageInput.invalid">
+                        <small class="form-text text-danger"
+                               *ngIf="imageInput.errors.pattern" jhiTranslate="settings.messages.validate.image.format">
+                            Your image url is invalid.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="imageInput.errors.minlength" jhiTranslate="settings.messages.validate.image.minlength">
+                            Your image url is required to be at least 3 character.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="imageInput.errors.maxlength" jhiTranslate="settings.messages.validate.image.maxlength">
+                            Your image url cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                    <div>
+                        <img width="100" height="100" src="{{settingsAccount.imageUrl}}">
+                    </div>
+                </div>
                 <div class="form-group" *ngIf="languages && languages.length > 0">
                     <label for="langKey" jhiTranslate="settings.form.language">Language</label>
                     <select class="form-control" id="langKey" name="langKey" [(ngModel)]="settingsAccount.langKey">
