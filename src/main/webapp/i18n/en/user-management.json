@@ -17,6 +17,7 @@
         "login": "Login",
         "firstName": "First name",
         "lastName": "Last name",
+        "imageUrl": "Photo",
         "email": "Email",
         "activated": "Activated",
         "deactivated": "Deactivated",

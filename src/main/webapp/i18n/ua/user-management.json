@@ -17,6 +17,7 @@
         "login": "Логін",
         "firstName": "Ім'я",
         "lastName": "Прізвище",
+        "imageUrl": "Фото",
         "email": "Електронна пошта",
         "activated": "Активований",
         "deactivated": "Деактивований",

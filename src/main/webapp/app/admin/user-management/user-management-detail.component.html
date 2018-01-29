@@ -16,7 +16,10 @@
         <dd>{{user.firstName}}</dd>
         <dt><span jhiTranslate="userManagement.lastName">Last Name</span></dt>
         <dd>{{user.lastName}}</dd>
-        <dt><span jhiTranslate="userManagement.email">Email</span></dt>
+        <dt><span jhiTranslate="userManagement.imageUrl">Image</span></dt>
+        <img src="{{user.imageUrl}}" height="100" width="100"/>
+        <dd>{{user.imageUrl}}</dd>
+        <dt><span jhiTranslate="userManagement.email" on>Email</span></dt>
         <dd>{{user.email}}</dd>
         <dt><span jhiTranslate="userManagement.langKey">Lang Key</span></dt>
         <dd>{{user.langKey}}</dd>

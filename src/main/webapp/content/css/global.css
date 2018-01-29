@@ -251,4 +251,8 @@ Social Buttons
     border-color: rgba(0, 0, 0, 0.2);
     color: #fff;
 }
+
+.img-rounded {
+    border-radius: 50%;
+}
 /* jhipster-needle-css-add-main JHipster will add new css style */
