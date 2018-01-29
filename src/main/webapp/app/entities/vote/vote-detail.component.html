@@ -1,0 +1,52 @@
+
+<div *ngIf="vote">
+    <h2><span jhiTranslate="craftApp.vote.detail.title">Vote</span> {{vote.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="craftApp.vote.matched">Matched</span></dt>
+        <dd>
+            <span>{{vote.matched}}</span>
+        </dd>
+        <dt><span jhiTranslate="craftApp.vote.variants">Variants</span></dt>
+        <dd>
+            <span>{{vote.variants}}</span>
+        </dd>
+        <dt><span jhiTranslate="craftApp.vote.createTS">Create TS</span></dt>
+        <dd>
+            <span>{{vote.createTS | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="craftApp.vote.updateTS">Update TS</span></dt>
+        <dd>
+            <span>{{vote.updateTS | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="craftApp.vote.elector">Elector</span></dt>
+        <dd>
+            {{vote.elector?.login}}
+        </dd>
+        <dt><span jhiTranslate="craftApp.vote.candidate">Candidate</span></dt>
+        <dd>
+            {{vote.candidate?.login}}
+        </dd>
+        <dt><span jhiTranslate="craftApp.vote.dog">Dog</span></dt>
+        <dd>
+            <div *ngIf="vote.dog">
+                <a [routerLink]="['/dog', vote.dog?.id]">{{vote.dog?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'vote/'+ vote.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

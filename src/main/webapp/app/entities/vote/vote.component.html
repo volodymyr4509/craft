@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span jhiTranslate="craftApp.vote.home.title">Votes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-vote" [routerLink]="['/', { outlets: { popup: ['vote-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="craftApp.vote.home.createLabel">
+            Create new Vote
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="votes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="matched"><span jhiTranslate="craftApp.vote.matched">Matched</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="variants"><span jhiTranslate="craftApp.vote.variants">Variants</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createTS"><span jhiTranslate="craftApp.vote.createTS">Create TS</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="updateTS"><span jhiTranslate="craftApp.vote.updateTS">Update TS</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="elector.login"><span jhiTranslate="craftApp.vote.elector">Elector</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="candidate.login"><span jhiTranslate="craftApp.vote.candidate">Candidate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dog.id"><span jhiTranslate="craftApp.vote.dog">Dog</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let vote of votes ;trackBy: trackId">
+                <td><a [routerLink]="['../vote', vote.id ]">{{vote.id}}</a></td>
+                <td>{{vote.matched}}</td>
+                <td>{{vote.variants}}</td>
+                <td>{{vote.createTS | date:'mediumDate'}}</td>
+                <td>{{vote.updateTS | date:'mediumDate'}}</td>
+                <td>
+                    {{vote.elector?.login}}
+                </td>
+                <td>
+                    {{vote.candidate?.login}}
+                </td>
+                <td>
+                    <div *ngIf="vote.dog">
+                        <a [routerLink]="['../dog', vote.dog?.id ]" >{{vote.dog?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../vote', vote.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vote/'+ vote.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vote/'+ vote.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myVoteLabel" jhiTranslate="craftApp.vote.home.createOrEditLabel">Create or edit a Vote</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!vote.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="vote.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="craftApp.vote.matched" for="field_matched">Matched</label>
+            <input type="checkbox" class="form-control" name="matched" id="field_matched"
+                [(ngModel)]="vote.matched" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="craftApp.vote.variants" for="field_variants">Variants</label>
+            <input type="number" class="form-control" name="variants" id="field_variants"
+                [(ngModel)]="vote.variants" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="craftApp.vote.createTS" for="field_createTS">Create TS</label>
+            <div class="input-group">
+                <input id="field_createTS" type="text" class="form-control" name="createTS" ngbDatepicker  #createTSDp="ngbDatepicker" [(ngModel)]="vote.createTS"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="createTSDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="craftApp.vote.updateTS" for="field_updateTS">Update TS</label>
+            <div class="input-group">
+                <input id="field_updateTS" type="text" class="form-control" name="updateTS" ngbDatepicker  #updateTSDp="ngbDatepicker" [(ngModel)]="vote.updateTS"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="updateTSDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="craftApp.vote.elector" for="field_elector">Elector</label>
+            <select class="form-control" id="field_elector" name="elector" [(ngModel)]="vote.elector" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === vote.elector?.id ? vote.elector : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="craftApp.vote.candidate" for="field_candidate">Candidate</label>
+            <select class="form-control" id="field_candidate" name="candidate" [(ngModel)]="vote.candidate" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === vote.candidate?.id ? vote.candidate : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="craftApp.vote.dog" for="field_dog">Dog</label>
+            <select class="form-control" id="field_dog" name="dog" [(ngModel)]="vote.dog" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="dogOption.id === vote.dog?.id ? vote.dog : dogOption" *ngFor="let dogOption of dogs; trackBy: trackDogById">{{dogOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

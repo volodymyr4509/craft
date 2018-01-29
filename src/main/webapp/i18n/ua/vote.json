@@ -1,0 +1,27 @@
+{
+    "craftApp": {
+        "vote" : {
+            "home": {
+                "title": "Votes",
+                "createLabel": "Створити новий Vote",
+                "createOrEditLabel": "Створити чи редагувати Vote"
+            },
+            "created": "Новий Vote створений з ідентифікатором {{ param }}",
+            "updated": "Vote оновлений з ідентифікатором {{ param }}",
+            "deleted": "Vote видалений з ідентифікатором {{ param }}",
+            "delete": {
+                "question": "Ви впевнені, що хочете видалити Vote {{ id }}?"
+            },
+            "detail": {
+                "title": "Vote"
+            },
+            "matched": "Matched",
+            "variants": "Variants",
+            "createTS": "Create TS",
+            "updateTS": "Update TS",
+            "elector": "Elector",
+            "candidate": "Candidate",
+            "dog": "Dog"
+        }
+    }
+}

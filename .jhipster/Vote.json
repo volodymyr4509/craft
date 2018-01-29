@@ -1,0 +1,51 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "elector",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "vote"
+        },
+        {
+            "relationshipName": "candidate",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "vote"
+        },
+        {
+            "relationshipName": "dog",
+            "otherEntityName": "dog",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "matched",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "variants",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "createTS",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updateTS",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20180129132027",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "vote",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}
