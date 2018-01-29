@@ -1,5 +1,6 @@
 package com.jhipster.craft.service.impl;
 
+import com.jhipster.craft.security.AuthoritiesConstants;
 import com.jhipster.craft.service.DogService;
 import com.jhipster.craft.domain.Dog;
 import com.jhipster.craft.repository.DogRepository;
@@ -7,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,8 +49,15 @@ public class DogServiceImpl implements DogService {
     @Override
     @Transactional(readOnly = true)
     public Page<Dog> findAll(Pageable pageable) {
-        log.debug("Request to get all Dogs");
-        return dogRepository.findAll(pageable);
+        boolean isAdmin = SecurityContextHolder.getContext().getAuthentication().getAuthorities()
+            .stream().anyMatch(o -> AuthoritiesConstants.ADMIN.equals(o.getAuthority()));
+
+        if (isAdmin) {
+            log.info("Request to get all Dogs (Admin privilege)");
+            return dogRepository.findAll(pageable);
+        }
+        log.debug("Request to get all Dogs for current user");
+        return dogRepository.findByMasterIsCurrentUser(pageable);
     }
 
     /**
