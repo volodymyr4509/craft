@@ -7,6 +7,7 @@ import { Ng2Webstorage } from 'ngx-webstorage';
 import { CraftSharedModule, UserRouteAccessService } from './shared';
 import { CraftAppRoutingModule} from './app-routing.module';
 import { CraftHomeModule } from './home/home.module';
+import { CraftGameModule } from './game/game.module';
 import { CraftAdminModule } from './admin/admin.module';
 import { CraftAccountModule } from './account/account.module';
 import { CraftEntityModule } from './entities/entity.module';
@@ -32,6 +33,7 @@ import {
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         CraftSharedModule,
         CraftHomeModule,
+        CraftGameModule,
         CraftAdminModule,
         CraftAccountModule,
         CraftEntityModule,
